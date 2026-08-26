@@ -291,7 +291,7 @@ pdf_make_group_dict(gx_device_pdf * pdev, const gs_pdf14trans_params_t * pparams
             case bcs_Managed:
                 if (pdev->params.ColorConversionStrategy != ccs_LeaveColorUnchanged) {
                     if (pdev->params.ColorConversionStrategy < ccs_CMYK || pdev->params.ColorConversionStrategy == ccs_ByObjectType) {
-                        dmprintf(pdev->memory, "\tCannot use DeviceIndependentColor for a Blending colour space.\n\tCannot use /Managed or /Simple replacement strategy with DeviceIndependentColor.\n\tChange ColorConversionStrategy or BlendConversionStrategy.\n\n");
+                        outprintf(pdev->memory, "\tCannot use DeviceIndependentColor for a Blending colour space.\n\tCannot use /Managed or /Simple replacement strategy with DeviceIndependentColor.\n\tChange ColorConversionStrategy or BlendConversionStrategy.\n\n");
                         return_error(gs_error_rangecheck);
                     }
                     code = WriteDefaultSpaces(pdev, pgs, &cs_value);
@@ -311,7 +311,7 @@ pdf_make_group_dict(gx_device_pdf * pdev, const gs_pdf14trans_params_t * pparams
                     case ccs_UseDeviceIndependentColorForImages:
                     case ccs_ByObjectType:
                     case ccs_sRGB:
-                        dmprintf(pdev->memory, "\tCannot use DeviceIndependentColor for a Blending colour space.\n\tCannot use /Managed or /Simple replacement strategy with DeviceIndependentColor.\n\tChange ColorConversionStrategy or BlendConversionStrategy.\n\n");
+                        outprintf(pdev->memory, "\tCannot use DeviceIndependentColor for a Blending colour space.\n\tCannot use /Managed or /Simple replacement strategy with DeviceIndependentColor.\n\tChange ColorConversionStrategy or BlendConversionStrategy.\n\n");
                         return_error(gs_error_rangecheck);
                         break;
 
